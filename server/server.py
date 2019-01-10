@@ -61,8 +61,8 @@ print('left=%d\n'%left)
 print('right=%d\n'%right)
 
 status     = 1          #Motor rotation
-forward    = 1          #Motor forward
-backward   = 0          #Motor backward
+forward    = 0          #Motor forward
+backward   = 1          #Motor backward
 dis_dir    = []         #Result of Ultrasonic Scanning
 ip_con     = ''
 
@@ -214,26 +214,26 @@ def run():            #Main function
         
         elif 'left' in data:                   #When server receive "left" from client,camera turns left
             tcpCliSock.send('7'.encode())
-            #car_dir.dir_left(pwm1)
-            car_dir.dir_right(pwm1)
+            car_dir.dir_left(pwm1)
+            #car_dir.dir_right(pwm1)
             continue
         
         elif 'right' in data:                  #When server receive "right" from client,camera turns right
             tcpCliSock.send('8'.encode())
-            #car_dir.dir_right(pwm1)
-            car_dir.dir_left(pwm1)
+            car_dir.dir_right(pwm1)
+            #car_dir.dir_left(pwm1)
             continue
         
         elif 'on' in data:                     #When server receive "on" from client,camera looks up
             tcpCliSock.send('5'.encode())
-            #car_dir.dir_Left(pwm0)
-            car_dir.dir_Right(pwm0)
+            car_dir.dir_Left(pwm0)
+            #car_dir.dir_Right(pwm0)
             continue
         
         elif 'under' in data:                  #When server receive "under" from client,camera looks down
             tcpCliSock.send('6'.encode())
-            #car_dir.dir_Right(pwm0)
-            car_dir.dir_Left(pwm0)
+            car_dir.dir_Right(pwm0)
+            #car_dir.dir_Left(pwm0)
             continue
         
         elif 'Left' in data:                   #When server receive "Left" from client,car turns left
